@@ -1,0 +1,68 @@
+body {
+    background-image: url('/static/img/pexels-pixabay-158251.jpg');
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.content {
+    background: rgba(220, 220, 220, 0.8);
+}
+
+.site-header {
+    line-height: 1;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.site-title {
+    font-family: "Montserrat", Georgia, "Times New Roman", serif;
+    font-size: 2.25rem;
+}
+
+.nav-scroller {
+  position: relative;
+  z-index: 2;
+  height: 2.75rem;
+  overflow-y: hidden;
+}
+
+.nav-scroller .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    padding-bottom: 1rem;
+    margin-top: -1px;
+    overflow-x: auto;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.h-250 { height: 250px; }
+@media (min-width: 768px) {
+  .h-md-250 { height: 250px; }
+}
+
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+@media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+    }
+}
+
+.blog-post, .blog-pagination {
+    margin-bottom: 4rem;
+}
+
+.site-footer {
+    padding: 0.5rem 0;
+    color: #999;
+    text-align: center;
+    background-color: #f9f9f9;
+    border-top: .05rem solid #e5e5e5;
+}
