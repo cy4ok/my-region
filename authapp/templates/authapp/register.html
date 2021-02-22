@@ -1,0 +1,12 @@
+{% extends 'mainsite/base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Регистрация аккаунта</h2>
+      <p class="lead">Выберите тип пользователя:</p>
+      <a href="{% url 'authapp:signup_traveler' %}" class="btn btn-info btn-lg" role="button">Путешественник</a>
+      <a href="#" class="btn btn-success btn-lg" role="button">Инструктор</a>
+    </div>
+  </div>
+{% endblock %}

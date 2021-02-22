@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
-from travelapp.models import Route, Instructor
+from travelapp.models import Route, Instructor, Trip
 from .forms import RouteFilterForm
 
 
@@ -34,9 +34,5 @@ class RouteCreate(CreateView):
     success_url = reverse_lazy('travelapp:route_list')
 
 
-class InstructorList(ListView):
-    model = Instructor
-
-
-class InstructorDetail(DetailView):
-    model = Instructor
+class TripDetail(DetailView):
+    model = Trip

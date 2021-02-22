@@ -1,0 +1,60 @@
+{% extends 'mainsite/base.html' %}
+{% block content %}
+<main role="main" class="container">
+  <div class="row">
+    <div class="col-md-12 blog-main">
+      <h3 class="pb-4 mb-4 font-italic border-bottom">Описание маршрута</h3>
+        <div class="row">
+            {% if object.is_active %}
+              <div class="blog-post">
+                <div class="row">
+                <div class="route-image p-4 col-4">
+                  <img src="/{{object.featured_photo}}" alt="" class="img-fluid img-thumbnail">
+                </div>
+                <div class="col-8">
+                    <h2 class="blog-post-title"><a href="{% url 'travelapp:route_read' object.pk %}">{{ object.name }}</a></h2>
+                    <p class="blog-post-meta">{{ object.added_at }} by <a href="#">{{ object.instructor.user.get_full_name }}</a></p>
+
+                    <p>Место: {{ object.location }}</p>
+                    <hr>
+                    <p>{{ object.short_desc }}</p>
+                    <hr>
+                    <p>Тип: {{ object.get_type_display }}, cложность: <span class="p-0 btn
+                      {% if object.complexity == 1 %}
+                        btn-success
+                      {% elif object.complexity == 2 %}
+                        btn-warning
+                      {% else %}
+                        btn-danger
+                      {% endif %}
+                      ">{{ object.get_complexity_display }}</span></p>
+                    <p>Длина: {{ object.length }}км, продолжительность (в днях): {{ object.duration }}</p>
+                </div>
+                </div>
+                <p class="">{{ object.long_desc}}</p>
+                <p class="h4 my-3">Запланированные походы:</p>
+                {% for trip in object.trips.all %}
+                <div class="row justify-content-center">
+                    <div class="col-2 border">{{ trip.starts_at|date:"d M Y" }} {{trip.starts_at|time:"H:i"}}</div>
+                    <div class="col-4 border">{{ trip.instructor.user.get_full_name }}</div>
+                    <div class="col-2 border">{{ trip.price }}</div>
+                    <div class="col-1 border">{{ trip.subbed }}/{{ trip.max_group_size }}</div>
+                    <a href="{% url 'ordersapp:create_order' trip.pk %}" class="btn btn-sm btn-info">Заказать</a>
+                </div>
+                {% empty %}
+                  <p>По данному маршруту не запланировано ни одного похода.</p>
+                {% endfor %}
+              </div><!-- /.blog-post -->
+            {% endif %}
+        </div>
+
+<!--      <nav class="blog-pagination">-->
+<!--        <a class="btn btn-outline-primary" href="#">Older</a>-->
+<!--        <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">Newer</a>-->
+<!--      </nav>-->
+
+    </div><!-- /.blog-main -->
+
+  </div><!-- /.row -->
+</main>
+{% endblock %}

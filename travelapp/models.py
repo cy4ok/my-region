@@ -1,13 +1,13 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from djmoney.models.fields import MoneyField
-from userapp.models import Instructor
+from authapp.models import Instructor
 
 
-class RouteType(models.TextChoices):
-    ON_FOOT = 'Пеший'
-    ON_BIKE = 'Велосипедный'
-    ON_BOAT = 'Водный'
+class RouteType(models.IntegerChoices):
+    ON_FOOT = 1, _('Пеший')
+    ON_BIKE = 2, _('Велосипедный')
+    ON_BOAT = 3, _('Водный')
 
 
 class RouteLevel(models.IntegerChoices):
@@ -35,16 +35,14 @@ class Route(models.Model):
     objects = RouteFilterQuerySet.as_manager()
 
     name = models.CharField(verbose_name='Название маршрута', max_length=100, unique=True)
-    type = models.CharField(verbose_name='Тип маршрута',
-                            max_length=12,
-                            choices=RouteType.choices,
-                            default=RouteType.ON_FOOT,
-                            db_index=True)
-    base_price = MoneyField(verbose_name='Ориентировочная стоимость прохождения маршрута',
-                            max_digits=7,
-                            decimal_places=2,
-                            default_currency='RUB',
-                            default=0)
+    type = models.IntegerField(verbose_name='Тип маршрута',
+                               choices=RouteType.choices,
+                               default=RouteType.ON_FOOT,
+                               db_index=True)
+    base_price = models.DecimalField(verbose_name='Ориентировочная стоимость прохождения маршрута',
+                                     max_digits=8,
+                                     decimal_places=2,
+                                     default=0)
     short_desc = models.TextField(verbose_name='Краткое описание')
     long_desc = models.TextField(verbose_name='Полное описание')
     location = models.CharField(verbose_name='Местоположение', max_length=200, db_index=True)
@@ -55,7 +53,7 @@ class Route(models.Model):
                                      default=RouteLevel.EASY,
                                      db_index=True)
     added_at = models.DateTimeField(verbose_name='Время создания маршрута', auto_now_add=True)
-    featured_photo = models.ImageField(upload_to='images', verbose_name='Фото для оформления маршрута', blank=True)
+    featured_photo = models.ImageField(upload_to='static/img', verbose_name='Фото для оформления маршрута', blank=True)
     is_active = models.BooleanField(verbose_name='Маршрут доступен для проведения', default=True, db_index=True)
     instructor = models.ForeignKey(Instructor,
                                    related_name='routes',
@@ -78,16 +76,48 @@ class RoutePhoto(models.Model):
 
 
 class Trip(models.Model):
-    route = models.ForeignKey(Route,
+    route = models.ForeignKey('Route',
                               related_name='trips',
-                              null=True,
-                              on_delete=models.SET_NULL)
-    price = MoneyField(verbose_name='Стоимость прохождения маршрута',
-                       max_digits=7,
-                       decimal_places=2,
-                       default_currency='RUB')  # load from Route by default
+                              on_delete=models.CASCADE)
+    price = models.DecimalField(verbose_name='Стоимость прохождения маршрута',
+                                max_digits=8,
+                                decimal_places=2,)
     announced_at = models.DateTimeField(verbose_name='Время объявления похода', auto_now_add=True)
     starts_at = models.DateTimeField(verbose_name='Время начала похода')
     instructor = models.ForeignKey(Instructor,
                                    related_name='trips',
                                    on_delete=models.CASCADE)
+    subbed = models.IntegerField(verbose_name='Мест занято', default=0)
+    max_group_size = models.IntegerField(verbose_name='Количество мест', null=True)
+
+    def get_cost(self):
+        options_cost = 0
+        for option in self.options.all():
+            options_cost += option.price
+        return self.price + options_cost
+
+    def __str__(self):
+        return f'Поход по маршруту "{self.route.name}" ({self.starts_at})'
+
+
+class Options(models.IntegerChoices):
+    INSURANCE = 1, _('Страховка')
+    RENT = 2, _('Аренда инвентаря')
+    FOOD = 3, _('Питание')
+    LIVING_EXPENCES = 4, _('Проживание')
+    TRANSIT = 5, _('Проезд до места')
+
+
+class TripOptionAvailable(models.Model):
+    trip = models.ManyToManyField('Trip',
+                                  related_name='options',)
+    name = models.IntegerField(verbose_name='Наименование опции',
+                               choices=Options.choices,
+                               )
+    price = models.DecimalField(verbose_name='Стоимость опции',
+                                max_digits=7,
+                                decimal_places=2,
+                                default=0)
+
+    def __str__(self):
+        return f'{self.get_name_display()}: {self.price} р.'

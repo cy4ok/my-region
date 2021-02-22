@@ -1,0 +1,16 @@
+{% extends 'mainsite/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-md-8 col-sm-10 col-12">
+      <h2>Оставить заявку в поход</h2>
+      <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Заказать</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
