@@ -1,3 +1,17 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView
 
-# Create your views here.
+from authapp.models import Instructor, Traveler
+
+
+class InstructorList(ListView):
+    model = Instructor
+
+
+class InstructorDetail(DetailView):
+    model = Instructor
+
+
+class TravelerProfileView(DetailView):
+    model = Traveler
+    template_name = 'userapp/traveler_detail.html'

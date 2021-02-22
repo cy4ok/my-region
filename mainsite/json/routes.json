@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "Путешествие в историю",
+    "type": 2,
+    "base_price": "10000.00",
+    "short_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex.",
+    "long_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex excepturi expedita, in itaque magnam molestiae nam natus nulla optio praesentium quae quidem quod quos recusandae saepe similique suscipit tenetur, vero. Accusantium animi, asperiores assumenda consectetur consequuntur corporis cum deserunt dicta, doloremque, eius eos error eveniet expedita facere id laudantium libero maxime necessitatibus pariatur porro quam qui quidem quisquam quod reiciendis rerum saepe tempore totam vitae voluptatibus. Commodi minus perferendis quae rem. At atque blanditiis dolor nihil repellat sed similique temporibus voluptatibus. Asperiores magnam minima porro ut.",
+    "location": "Ленинградская область, Россия",
+    "duration": 3,
+    "length": 40,
+    "complexity": 3,
+    "featured_photo": "static/img/pexels-kaique-rocha-775201_h8QHdL7.jpg",
+    "instructor_id": 1
+  },
+    {
+    "id": 2,
+    "name": "Путешествие на лодках",
+    "type": 3,
+    "base_price": "3000.00",
+    "short_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex.",
+    "long_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex excepturi expedita, in itaque magnam molestiae nam natus nulla optio praesentium quae quidem quod quos recusandae saepe similique suscipit tenetur, vero. Accusantium animi, asperiores assumenda consectetur consequuntur corporis cum deserunt dicta, doloremque, eius eos error eveniet expedita facere id laudantium libero maxime necessitatibus pariatur porro quam qui quidem quisquam quod reiciendis rerum saepe tempore totam vitae voluptatibus. Commodi minus perferendis quae rem. At atque blanditiis dolor nihil repellat sed similique temporibus voluptatibus. Asperiores magnam minima porro ut.",
+    "location": "Карелия, Россия",
+    "duration": 2,
+    "length": 25,
+    "complexity": 2,
+    "featured_photo": "static/img/pexels-nejc-košir-338936.jpg",
+    "instructor_id": 1
+  },
+    {
+    "id": 3,
+    "name": "Путешествие в будущее",
+    "type": 1,
+    "base_price": "1000.00",
+    "short_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex.",
+    "long_desc": "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam aliquid amet animi commodi consequuntur cum cumque cupiditate dolore enim esse et eum ex excepturi expedita, in itaque magnam molestiae nam natus nulla optio praesentium quae quidem quod quos recusandae saepe similique suscipit tenetur, vero. Accusantium animi, asperiores assumenda consectetur consequuntur corporis cum deserunt dicta, doloremque, eius eos error eveniet expedita facere id laudantium libero maxime necessitatibus pariatur porro quam qui quidem quisquam quod reiciendis rerum saepe tempore totam vitae voluptatibus. Commodi minus perferendis quae rem. At atque blanditiis dolor nihil repellat sed similique temporibus voluptatibus. Asperiores magnam minima porro ut.",
+    "location": "Москва, Россия",
+    "duration": 1,
+    "length": 5,
+    "complexity": 1,
+    "featured_photo": "static/img/pexels-pixabay-459225.jpg",
+    "instructor_id": 2
+  }
+]

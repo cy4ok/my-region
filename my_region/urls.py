@@ -22,4 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', main_views.main, name='main'),
     path('travel/', include('travelapp.urls', namespace='travel')),
+    path('user/', include('userapp.urls', namespace='user')),
+    path('orders/', include('ordersapp.urls', namespace='orders')),
+    path('auth/', include('authapp.urls', namespace='auth')),
 ]
