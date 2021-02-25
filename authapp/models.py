@@ -15,6 +15,7 @@ class AppUser(AbstractUser):
     )
     email = models.EmailField(verbose_name='Адрес Email', unique=True)
     is_instructor = models.BooleanField(default=False, null=False, db_index=True)
+    is_traveler = models.BooleanField(default=False, null=False, db_index=True)
     # phone_number
 
     def is_key_expired(self):
@@ -25,7 +26,7 @@ class AppUser(AbstractUser):
 
 
 class Traveler(models.Model):
-    user = models.OneToOneField(AppUser, related_name='profile', unique=True, db_index=True, null=False, on_delete=models.CASCADE)
+    user = models.OneToOneField(AppUser, unique=True, db_index=True, null=False, on_delete=models.CASCADE)
     about = models.TextField(verbose_name='О себе', blank=True)
     home_region = models.CharField(verbose_name='Место проживания', max_length=100)
     following = models.ManyToManyField('Instructor', verbose_name='Подписки', blank=True, related_name='followers')
@@ -36,7 +37,7 @@ class Traveler(models.Model):
 
 
 class Instructor(models.Model):
-    user = models.OneToOneField(AppUser, unique=False, db_index=True, null=True, on_delete=models.CASCADE)
+    user = models.OneToOneField(AppUser, unique=True, db_index=True, null=True, on_delete=models.CASCADE)
     about = models.TextField(verbose_name='О себе', blank=True)
     home_region = models.CharField(verbose_name='Место проживания', max_length=100, blank=True)
     routes_run = models.IntegerField(verbose_name='Пройдено маршрутов', default=0)

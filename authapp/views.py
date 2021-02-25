@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
-from authapp.forms import TravelerSignupForm, UserLoginForm
+from authapp.forms import SignupForm, UserLoginForm
 from authapp.models import AppUser
 
 
@@ -44,11 +44,26 @@ class RegisterView(TemplateView):
 
 class TravelerSignupView(CreateView):
     model = AppUser
-    form_class = TravelerSignupForm
+    form_class = SignupForm
     template_name = 'authapp/signup.html'
 
     def get_context_data(self, **kwargs):
         kwargs['user_type'] = 'traveler'
+        return super().get_context_data(**kwargs)
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('main')
+
+
+class InstructorSignupView(CreateView):
+    model = AppUser
+    form_class = SignupForm
+    template_name = 'authapp/signup.html'
+
+    def get_context_data(self, **kwargs):
+        kwargs['user_type'] = 'instructor'
         return super().get_context_data(**kwargs)
 
     def form_valid(self, form):

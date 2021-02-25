@@ -10,7 +10,7 @@
       "is_instructor": true,
       "email": "test1@test.app",
       "username": "ins1",
-      "password": "ins1",
+      "password": "pbkdf2_sha256$216000$gi85cElvxiV1$1H8bmbHPICR98QdqYPwfs3FHBuPZSkhh76nlZaHRLGU=",
       "first_name": "Сергей Викторович",
       "last_name": "Быков"
     }
@@ -26,7 +26,7 @@
         "is_instructor": true,
         "email": "test2@test.app",
         "username": "ins2",
-        "password": "ins2",
+        "password": "pbkdf2_sha256$216000$gi85cElvxiV1$1H8bmbHPICR98QdqYPwfs3FHBuPZSkhh76nlZaHRLGU=",
         "first_name": "Алексей Владимирович",
         "last_name": "Иванов"
       }
