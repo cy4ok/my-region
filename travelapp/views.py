@@ -30,7 +30,7 @@ class RouteDetail(DetailView):
     model = Route
 
 
-class RouteCreate(CreateView):
+class RouteCreateView(CreateView):
     model = Route
     form_class = FullRouteCreateForm
     success_url = reverse_lazy('travelapp:route_list')
@@ -40,11 +40,11 @@ class RouteCreate(CreateView):
         form.instance.instructor = self.request.user.instructor
         form.cleaned_data.pop('photos')
         with transaction.atomic():
-            self.object = form.save()
+            result = super(RouteCreateView, self).form_valid(form)
             for photo in files:
                 RoutePhoto.objects.create(image=photo, route=form.instance)
 
-        return HttpResponseRedirect(self.get_success_url())
+        return result
 
 
 class TripDetail(DetailView):
