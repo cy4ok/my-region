@@ -15,3 +15,8 @@ class InstructorDetail(DetailView):
 class TravelerProfileView(DetailView):
     model = Traveler
     template_name = 'userapp/traveler_detail.html'
+
+
+class InstructorProfileView(DetailView):
+    model = Instructor
+    template_name = 'userapp/instructor_detail.html'

@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.db import transaction
 from django.utils.timezone import now
 
-from authapp.models import AppUser, Traveler
+from authapp.models import AppUser, Traveler, Instructor
 
 
 class UserLoginForm(AuthenticationForm):
@@ -14,7 +14,7 @@ class UserLoginForm(AuthenticationForm):
         fields = ('username', 'password')
 
 
-class TravelerSignupForm(UserCreationForm):
+class SignupForm(UserCreationForm):
     about = forms.CharField(required=True)
     home_region = forms.CharField()
 
@@ -33,11 +33,19 @@ class TravelerSignupForm(UserCreationForm):
     @transaction.atomic
     def save(self):
         user = super().save(commit=False)
-        user.is_instructor = False
+        user_type = self.data.get('user_type', None)
+        if user_type == 'traveler':
+            user.is_traveler = True
+            profile_maker = Traveler
+        elif user_type == 'instructor':
+            user.is_instructor = True
+            profile_maker = Instructor
+
         user.save()
-        traveler = Traveler.objects.create(user=user)
+        profile = profile_maker.objects.create(user=user)
+
         print(self.cleaned_data)
-        traveler.about = self.cleaned_data.get('about')
-        traveler.home_region = self.cleaned_data.get('home_region')
-        traveler.save()
+        profile.about = self.cleaned_data.get('about')
+        profile.home_region = self.cleaned_data.get('home_region')
+        profile.save()
         return user

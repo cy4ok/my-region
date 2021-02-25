@@ -26,7 +26,7 @@ class OrderCreate(CreateView):
     def form_valid(self, form):
         form_obj = form.save(commit=False)
         user = self.request.user
-        form_obj.traveler = user.profile
+        form_obj.traveler = user.traveler
         trip = form_obj.trip
         trip.subbed += form_obj.group_size
         if form_obj.trip.subbed > form_obj.trip.max_group_size:

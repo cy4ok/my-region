@@ -21,7 +21,12 @@
     <ul class="navbar-nav mt-2 mt-md-0">
         {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'userapp:profile_page' user.profile.pk %}">{{ user.first_name|default:'User' }}</a>
+          <a class="nav-link" href="
+            {% if user.is_traveler == True %}
+                {% url 'userapp:traveler_page' user.traveler.pk %}
+            {% else %}
+                {% url 'userapp:instructor_page' user.instructor.pk %}
+            {% endif %}">{{ user.first_name|default:'User' }}</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="{% url 'auth:logout' %}">Выйти</a>

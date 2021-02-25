@@ -5,7 +5,7 @@ app_name = 'travelapp'
 
 urlpatterns = [
     path('', travelapp.RouteList.as_view(), name='route_list'),
-    # path('route/create/', travelapp.RouteCreate.as_view(), name='route_create'),
+    path('route/create/', travelapp.RouteCreate.as_view(), name='route_create'),
     path('route/<int:pk>/', travelapp.RouteDetail.as_view(), name='route_read'),
     # path('route/update/<int:pk>/', travelapp.RouteUpdate.as_view(), name='route_update'),
     # path('route/delete/<int:pk>/', travelapp.RouteDelete.as_view(), name='route_delete'),
