@@ -1,19 +1,22 @@
 from django import forms
 
-from .models import RouteType, RouteLevel, Route
+from .models import RouteType, RouteLevel, Route, District, Region
 
 
 class RouteFilterForm(forms.Form):
-    name = forms.CharField(max_length=100, required=False)
-    region = forms.CharField(max_length=100, required=False)
+    name = forms.CharField(label='Название', max_length=100, required=False)
+    district = forms.CharField(label='Округ', max_length=30, required=False,
+                               widget=forms.Select(choices=[('', '---')] + [(x.id, x) for x in District.objects.all()]))
+    region = forms.CharField(label='Регион', max_length=50, required=False,
+                             widget=forms.Select(choices=[('', '---')] + [(x.id, x) for x in Region.objects.all()]))
     type = forms.CharField(
         label='Тип маршрута',
-        widget=forms.Select(choices=[('', '---')] + [(x, x) for x in RouteType]),
+        widget=forms.Select(choices=[('', '---')] + [(x, x.label) for x in RouteType]),
         required=False,
     )
     level = forms.CharField(
-        label='Route level',
-        widget=forms.Select(choices=[('', '---')] + [(x, x) for x in RouteLevel]),
+        label='Сложность',
+        widget=forms.Select(choices=[('', '---')] + [(x, x.label) for x in RouteLevel]),
         required=False,
     )
 
