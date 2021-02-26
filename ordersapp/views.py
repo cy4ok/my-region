@@ -6,7 +6,7 @@ from django.views.generic import CreateView
 
 from ordersapp.forms import OrderItemForm
 from ordersapp.models import Order, OrderItem
-from travelapp.models import Trip
+from travelapp.models import Trip, TripOptionAvailable
 
 
 class OrderCreate(CreateView):
@@ -16,11 +16,13 @@ class OrderCreate(CreateView):
     fields = ['trip', 'group_size', 'options_used']
 
     def get_initial(self):
-        return {'trip': Trip.objects.get(pk=self.kwargs['pk']),}
+        return {'trip': Trip.objects.select_related().get(pk=self.kwargs['pk']),}
 
     def get_form(self, form_class=None):
         form = super(OrderCreate, self).get_form(form_class)
+        form.fields['trip'].disabled = True
         form.fields['options_used'].required = False
+        form.fields['options_used'].queryset = TripOptionAvailable.objects.filter(trip=form.initial['trip'])
         return form
 
     def form_valid(self, form):
