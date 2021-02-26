@@ -22,7 +22,7 @@ class RouteFilterQuerySet(models.QuerySet):
         if kwargs.get('name', ''):
             qs = qs.filter(name__icontains=kwargs['name'])
         if kwargs.get('region', ''):
-            qs = qs.filter(location__icontains=kwargs['region'])
+            qs = qs.filter(location__id=kwargs['region'])
         if kwargs.get('type', ''):
             qs = qs.filter(type=kwargs['type'])
         if kwargs.get('level', ''):
@@ -45,7 +45,12 @@ class Route(models.Model):
                                      default=0)
     short_desc = models.TextField(verbose_name='Краткое описание')
     long_desc = models.TextField(verbose_name='Полное описание')
-    location = models.CharField(verbose_name='Местоположение', max_length=200, db_index=True)
+    # location = models.CharField(verbose_name='Местоположение', max_length=200, db_index=True)
+    location = models.ForeignKey('travelapp.Region',
+                                 verbose_name='Местоположение',
+                                 db_index=True,
+                                 null=True,
+                                 on_delete=models.SET_NULL)
     duration = models.IntegerField(verbose_name='Продолжительность', db_index=True)
     length = models.FloatField(verbose_name='Длина', db_index=True)
     complexity = models.IntegerField(verbose_name='Сложность',
@@ -121,3 +126,18 @@ class TripOptionAvailable(models.Model):
 
     def __str__(self):
         return f'{self.get_name_display()}: {self.price} р.'
+
+
+class District(models.Model):
+    name = models.CharField(verbose_name='Наименование', max_length=50, blank=False, db_index=True)
+
+    def __str__(self):
+        return f'{self.name}'
+
+
+class Region(models.Model):
+    name = models.CharField(verbose_name='Наименование', max_length=50, blank=False, db_index=True)
+    district = models.ForeignKey(District, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'{self.name} ({self.district.name})'
