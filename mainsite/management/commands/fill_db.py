@@ -23,8 +23,8 @@ class Command(BaseCommand):
         Route.objects.all().delete()
         Instructor.objects.all().delete()
         AppUser.objects.all().delete()
-        super_user = AppUser.objects.create_superuser('django', 'test@test.app', 'geekbrains', is_instructor=False)
-        super_user.save()
+        # super_user = AppUser.objects.create_superuser('django', 'test@test.app', 'geekbrains', is_instructor=False)
+        # super_user.save()
 
         # instructors = load_from_json('instructors')
         # for instructor in instructors:
