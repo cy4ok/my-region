@@ -1,9 +1,11 @@
+from django.db import transaction
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView
 
-from travelapp.models import Route, Instructor, Trip
-from .forms import RouteFilterForm
+from travelapp.models import Route, Instructor, Trip, RoutePhoto
+from .forms import RouteFilterForm, FullRouteCreateForm
 
 
 class RouteList(ListView):
@@ -28,10 +30,21 @@ class RouteDetail(DetailView):
     model = Route
 
 
-class RouteCreate(CreateView):
+class RouteCreateView(CreateView):
     model = Route
-    fields = []
+    form_class = FullRouteCreateForm
     success_url = reverse_lazy('travelapp:route_list')
+
+    def form_valid(self, form):
+        files = self.request.FILES.getlist('photos')
+        form.instance.instructor = self.request.user.instructor
+        form.cleaned_data.pop('photos')
+        with transaction.atomic():
+            result = super(RouteCreateView, self).form_valid(form)
+            for photo in files:
+                RoutePhoto.objects.create(image=photo, route=form.instance)
+
+        return result
 
 
 class TripDetail(DetailView):

@@ -70,7 +70,7 @@ class Route(models.Model):
 
 
 class RoutePhoto(models.Model):
-    image = models.ImageField(upload_to='images')
+    image = models.ImageField(upload_to='static/route_photos')
     added_at = models.DateTimeField(verbose_name='Время добавления', auto_now_add=True)
     route = models.ForeignKey(Route, related_name='photos', on_delete=models.CASCADE)
 
