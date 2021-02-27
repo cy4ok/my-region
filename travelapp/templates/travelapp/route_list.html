@@ -19,7 +19,7 @@
                 <h2 class="blog-post-title text-center"><a href="{% url 'travelapp:route_read' route.pk %}">{{ route.name }}</a></h2>
                 <p class="blog-post-meta">Инструктор: <a href="#">{{ route.instructor.user.get_full_name }}</a></p>
 
-                <p>Место: {{ route.location }}</p>
+                <p>Место: {{ route.location.name }}</p>
                 <hr>
                 <p>{{ route.short_desc }}</p>
                 <hr>

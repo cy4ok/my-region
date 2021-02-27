@@ -15,7 +15,7 @@
                     <h2 class="blog-post-title"><a href="{% url 'travelapp:route_read' object.pk %}">{{ object.name }}</a></h2>
                     <p class="blog-post-meta">{{ object.added_at }} by <a href="#">{{ object.instructor.user.get_full_name }}</a></p>
 
-                    <p>Место: {{ object.location }}</p>
+                    <p>Место: {{ object.location.name }}</p>
                     <hr>
                     <p>{{ object.short_desc }}</p>
                     <hr>

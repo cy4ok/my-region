@@ -5,8 +5,7 @@ from django.core.management.base import BaseCommand
 
 from authapp.models import AppUser, Traveler, Instructor
 
-from travelapp.models import Trip, TripOptionAvailable, Route
-
+from travelapp.models import Trip, TripOptionAvailable, Route, District, Region
 
 JSON_PATH = 'mainsite/json'
 
