@@ -4,18 +4,25 @@ from .models import RouteType, RouteLevel, Route, District, Region
 
 
 class RouteFilterForm(forms.Form):
-    name = forms.CharField(label='Название', max_length=100, required=False)
+    # name = forms.CharField(label='Название', max_length=100, required=False)
     # todo
-    district = forms.ModelChoiceField(queryset=District.objects.all(), label='Округ', required=False)
-    region = forms.ModelChoiceField(queryset=Region.objects.all(), label='Регион', required=False)
-    type = forms.CharField(
+    district = forms.ModelChoiceField(queryset=District.objects.all(),
+                                      label='Округ',
+                                      required=False,
+                                      empty_label='Округ'
+                                      )
+    region = forms.ModelChoiceField(queryset=Region.objects.all(),
+                                    label='Регион',
+                                    empty_label='Регион',
+                                    required=False)
+    type = forms.ChoiceField(
         label='Тип маршрута',
-        widget=forms.Select(choices=[('', '---')] + [(x, x.label) for x in RouteType]),
+        choices=[('', 'Тип маршрута')] + [(x, x.label) for x in RouteType],
         required=False,
     )
-    level = forms.CharField(
+    level = forms.ChoiceField(
         label='Сложность',
-        widget=forms.Select(choices=[('', '---')] + [(x, x.label) for x in RouteLevel]),
+        choices=[('', 'Сложность')] + [(x, x.label) for x in RouteLevel],
         required=False,
     )
 

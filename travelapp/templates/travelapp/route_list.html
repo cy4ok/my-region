@@ -4,10 +4,7 @@
   <div class="row">
     <div class="col-md-12 blog-main">
       <h3 class="pb-4 mb-4 font-italic border-bottom">Список маршрутов</h3>
-        <form action="{% url 'travelapp:route_list' %}" method="get">
-          {{ form }}
-          <input type="submit" value="Submit">
-        </form>
+        {% include 'travelapp/includes/inc-filter-form.html' %}
         <div class="row">
         {% for route in object_list %}
             {% if route.is_active %}

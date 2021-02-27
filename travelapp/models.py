@@ -19,10 +19,10 @@ class RouteLevel(models.IntegerChoices):
 class RouteFilterQuerySet(models.QuerySet):
     def search(self, *args, **kwargs):
         qs = self.filter(is_active=True)
-        if kwargs.get('name', ''):
-            qs = qs.filter(name__icontains=kwargs['name'])
         if kwargs.get('region', ''):
             qs = qs.filter(location=kwargs['region'])
+        elif kwargs.get('district', ''):
+            qs = qs.filter(location__district=kwargs['district'])
         if kwargs.get('type', ''):
             qs = qs.filter(type=kwargs['type'])
         if kwargs.get('level', ''):
@@ -92,8 +92,14 @@ class Trip(models.Model):
     instructor = models.ForeignKey(Instructor,
                                    related_name='trips',
                                    on_delete=models.CASCADE)
-    subbed = models.IntegerField(verbose_name='Мест занято', default=0)
+    kids = models.IntegerField(verbose_name='Детей в группе', default=0)
+    adults = models.IntegerField(verbose_name='Взрослых в группе', default=0)
+    # subbed = models.IntegerField(verbose_name='Мест занято', default=0)
     max_group_size = models.IntegerField(verbose_name='Количество мест', null=True)
+
+    @property
+    def subbed(self):
+        return self.kids + self.adults
 
     def get_cost(self):
         options_cost = 0
