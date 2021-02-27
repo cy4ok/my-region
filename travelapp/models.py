@@ -22,7 +22,7 @@ class RouteFilterQuerySet(models.QuerySet):
         if kwargs.get('name', ''):
             qs = qs.filter(name__icontains=kwargs['name'])
         if kwargs.get('region', ''):
-            qs = qs.filter(location__id=kwargs['region'])
+            qs = qs.filter(location=kwargs['region'])
         if kwargs.get('type', ''):
             qs = qs.filter(type=kwargs['type'])
         if kwargs.get('level', ''):
