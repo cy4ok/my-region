@@ -13,10 +13,14 @@ class OrderCreate(CreateView):
     model = OrderItem
     # form_class = OrderItemForm
     success_url = reverse_lazy('travelapp:route_list')
-    fields = ['trip', 'group_size', 'options_used']
+    fields = ['trip', 'adults_amount', 'kids_amount', 'options_used', 'contact_phone', 'contact_email', 'notes']
 
     def get_initial(self):
-        return {'trip': Trip.objects.select_related().get(pk=self.kwargs['pk']),}
+        return {
+            'trip': Trip.objects.select_related().get(pk=self.kwargs['pk']),
+            'contact_phone': self.request.user.phone,
+            'contact_email': self.request.user.email,
+        }
 
     def get_form(self, form_class=None):
         form = super(OrderCreate, self).get_form(form_class)
@@ -30,7 +34,8 @@ class OrderCreate(CreateView):
         user = self.request.user
         form_obj.traveler = user.traveler
         trip = form_obj.trip
-        trip.subbed += form_obj.group_size
+        trip.kids += form_obj.kids_amount
+        trip.adults += form_obj.adults_amount
         if form_obj.trip.subbed > form_obj.trip.max_group_size:
             raise forms.ValidationError('В группе набирается слишком много людей!')
 

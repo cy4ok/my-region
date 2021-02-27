@@ -6,7 +6,7 @@
   <div class="row">
     <div class="col-md-8 col-sm-10 col-12">
       <h2>Sign up as a {{ user_type }}</h2>
-      <form method="post">
+      <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
         <input type="hidden" name="user_type" value="{{ user_type }}">

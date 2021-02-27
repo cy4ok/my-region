@@ -111,7 +111,8 @@
       "announced_at": "2021-02-25T15:02:57.933Z",
       "starts_at": "2021-05-01T07:00:00Z",
       "instructor": 1,
-      "subbed": 0,
+      "adults": 0,
+      "kids": 0,
       "max_group_size": 20
     }
   },
@@ -124,7 +125,8 @@
       "announced_at": "2021-02-25T15:02:57.945Z",
       "starts_at": "2021-04-01T07:00:00Z",
       "instructor": 1,
-      "subbed": 0,
+      "adults": 0,
+      "kids": 0,
       "max_group_size": 20
     }
   },
@@ -137,7 +139,8 @@
       "announced_at": "2021-02-25T15:02:57.957Z",
       "starts_at": "2021-03-01T07:00:00Z",
       "instructor": 1,
-      "subbed": 0,
+      "adults": 0,
+      "kids": 0,
       "max_group_size": 10
     }
   },
@@ -150,7 +153,8 @@
       "announced_at": "2021-02-25T15:02:57.970Z",
       "starts_at": "2021-03-11T17:00:00Z",
       "instructor": 2,
-      "subbed": 0,
+      "adults": 0,
+      "kids": 0,
       "max_group_size": 10
     }
   },
@@ -921,6 +925,8 @@
       "username": "ins1",
       "first_name": "Сергей Викторович",
       "last_name": "Быков",
+      "gender": 2,
+      "phone": "+7-999-999-99-99",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2021-02-25T15:02:57.854Z",
@@ -945,6 +951,8 @@
       "username": "ins2",
       "first_name": "Алексей Владимирович",
       "last_name": "Иванов",
+      "gender": 2,
+      "phone": "+7-999-999-99-98",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2021-02-25T15:02:57.870Z",
@@ -969,6 +977,8 @@
       "username": "django",
       "first_name": "",
       "last_name": "",
+      "gender": 1,
+      "phone": "+7-999-999-99-00",
       "is_staff": true,
       "is_active": true,
       "date_joined": "2021-02-25T15:02:57.569Z",
@@ -990,9 +1000,11 @@
       "password": "pbkdf2_sha256$216000$bCS7BBBniLAN$wAqsOKJRHteM2ykq1DHHpVNz9GMZcXnJVNjD2f+37k8=",
       "last_login": "2021-02-26T11:57:57.313Z",
       "is_superuser": false,
-      "username": "Владислав",
+      "username": "tester",
       "first_name": "Владислав",
       "last_name": "Чекунов",
+      "gender": 2,
+      "phone": "+7-999-999-99-11",
       "is_staff": false,
       "is_active": true,
       "date_joined": "2021-02-26T11:57:57.103Z",

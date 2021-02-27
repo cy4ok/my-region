@@ -3,16 +3,24 @@ from datetime import timedelta
 from django.db import models
 from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
+from django.utils.translation import gettext_lazy as _
+
+
+class Gender(models.IntegerChoices):
+    FEMALE = 1, _('Женский')
+    MALE = 2, _('Мужской')
 
 
 class AppUser(AbstractUser):
-    avatar = models.ImageField(upload_to='user_pics', blank=True)
+    avatar = models.ImageField(upload_to='static/user_pics', blank=True)
     date_of_birth = models.DateField(verbose_name='Дата рождения', default=now)
     activation_key = models.CharField(verbose_name='Ключ активации', max_length=128, blank=True)
     activation_key_expiry = models.DateTimeField(
         verbose_name='Крайний срок текущей активации',
-        default=(now() + timedelta(hours=24))
+        default=now() + timedelta(hours=24),
     )
+    gender = models.IntegerField(verbose_name='Пол', blank=False, db_index=True, choices=Gender.choices)
+    phone = models.CharField(verbose_name='Номер телефона', blank=True, max_length=20)
     email = models.EmailField(verbose_name='Адрес Email', unique=True)
     is_instructor = models.BooleanField(default=False, null=False, db_index=True)
     is_traveler = models.BooleanField(default=False, null=False, db_index=True)

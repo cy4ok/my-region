@@ -20,7 +20,7 @@ class SignupForm(UserCreationForm):
 
     class Meta(UserCreationForm.Meta):
         model = AppUser
-        fields = ['username', 'email', 'first_name', 'last_name', 'date_of_birth', 'password1', 'password2', 'avatar']
+        fields = ['username', 'email', 'phone', 'first_name', 'last_name', 'gender', 'date_of_birth', 'password1', 'password2', 'avatar']
 
     def clean_date_of_birth(self):
         dob = self.cleaned_data['date_of_birth']
@@ -44,7 +44,7 @@ class SignupForm(UserCreationForm):
         user.save()
         profile = profile_maker.objects.create(user=user)
 
-        print(self.cleaned_data)
+        # print(self.cleaned_data)
         profile.about = self.cleaned_data.get('about')
         profile.home_region = self.cleaned_data.get('home_region')
         profile.save()
