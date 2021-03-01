@@ -23,7 +23,7 @@ class RouteList(ListView):
             form = RouteFilterForm(self.request.GET)
             if form.is_valid():
                 return Route.objects.search(**form.cleaned_data)
-        return Route.objects.filter(is_active=True)
+        return Route.objects.filter(is_usable=True)
 
 
 class RouteDetail(DetailView):

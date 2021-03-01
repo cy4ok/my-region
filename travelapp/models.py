@@ -18,7 +18,7 @@ class RouteLevel(models.IntegerChoices):
 
 class RouteFilterQuerySet(models.QuerySet):
     def search(self, *args, **kwargs):
-        qs = self.filter(is_active=True)
+        qs = self.filter(is_active=True, is_checked=True)
         if kwargs.get('region', ''):
             qs = qs.filter(location=kwargs['region'])
         elif kwargs.get('district', ''):
@@ -59,7 +59,8 @@ class Route(models.Model):
                                      db_index=True)
     added_at = models.DateTimeField(verbose_name='Время создания маршрута', auto_now_add=True)
     featured_photo = models.ImageField(upload_to='static/img', verbose_name='Фото для оформления маршрута', blank=True)
-    is_active = models.BooleanField(verbose_name='Маршрут доступен для проведения', default=True, db_index=True)
+    is_active = models.BooleanField(verbose_name='Маршрут доступен для проведения', default=True, db_index=True, blank=False)
+    is_checked = models.BooleanField(verbose_name='Модерация проведена', default=False, db_index=True, blank=False)
     instructor = models.ForeignKey(Instructor,
                                    related_name='routes',
                                    on_delete=models.SET_NULL,  # todo ?
@@ -68,6 +69,10 @@ class Route(models.Model):
     # height_difference
     # times_run
     # comments
+
+    @property
+    def is_usable(self):
+        return self.is_checked and self.is_active
 
     def __str__(self):
         return f'Маршрут "{self.name}"\n{self.location} ({self.type}, {self.length:.1f}км, {self.duration}ч)\n' \
