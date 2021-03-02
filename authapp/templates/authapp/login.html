@@ -15,13 +15,14 @@
   {% endif %}
   <div class="row">
     <div class="col-lg-4 col-md-6 col-sm-8 col-12">
-      <h2>Log in</h2>
+      <h2>Войти</h2>
       <form method="post">
         {% csrf_token %}
         <input type="hidden" name="next" value="{{ next }}">
         {{ login_form.username|as_crispy_field }}
         {{ login_form.password|as_crispy_field }}
-        <button type="submit" class="btn btn-primary">Log in</button>
+        <button type="submit" class="btn btn-primary">Войти</button>
+        <a href="{% url 'authapp:register' %}" class="btn btn-info">Регистрация</a>
       </form>
     </div>
   </div>
