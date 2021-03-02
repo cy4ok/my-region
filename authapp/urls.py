@@ -6,7 +6,7 @@ app_name = 'authapp'
 
 urlpatterns = [
     path('login/', authapp.login_view, name='login'),
-    # path('logout/', authapp.logout, name='logout'),
+    path('logout/', authapp.logout, name='logout'),
     path('', include('django.contrib.auth.urls')),
     # path('edit/', authapp.edit, name='edit'),
     path('signup/', authapp.RegisterView.as_view(), name='register'),

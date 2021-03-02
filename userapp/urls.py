@@ -6,6 +6,8 @@ app_name = 'userapp'
 urlpatterns = [
     path('instructors/', userapp.InstructorList.as_view(), name='instructor_list'),
     # path('create/', userapp..as_view(), name='user_create'),
-    path('profile_traveler/<int:pk>/', userapp.TravelerProfileView.as_view(), name='traveler_page'),
-    path('profile_instructor/<int:pk>/', userapp.InstructorProfileView.as_view(), name='instructor_page'),
+    path('traveler_details/<int:pk>/', userapp.TravelerDetailView.as_view(), name='traveler_details'),
+    path('instructor_details/<int:pk>/', userapp.InstructorDetailView.as_view(), name='instructor_details'),
+    path('traveler_profile/', userapp.TravelerProfileView.as_view(), name='traveler_profile'),
+    path('instructor_profile/', userapp.InstructorDetailView.as_view(), name='instructor_profile'),
 ]

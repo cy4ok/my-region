@@ -1,7 +1,7 @@
 {% extends 'mainsite/base.html' %}
 
 {% block content %}
-    <div class="h4 col-12 text-center border rounded">Личный кабинет пользователя</div>
+    <div class="h4 col-12 text-center border rounded">Данные о пользователе {{ object.username }}</div>
         <div class="row my-4">
             <div class="col-3 route-image">
                 <img class="rounded-circle img-fluid img-thumbnail" src="/{{ object.user.avatar }}" />
@@ -20,28 +20,5 @@
                 </div>
             </div>
         </div>
-    <div class="h4 col-12 text-center border rounded">Мои маршруты</div>
-    <div class="h5 col-12 text-center border rounded">Избранные маршруты</div>
-    <div class="h5 col-12 text-center border rounded my-3">Запланированные походы</div>
-    {% for order in object.ordered_trips.all %}
-        {% if forloop.first %}
-        <div class="row justify-content-center font-weight-bold">
-            <div class="col-2 border">Время похода</div>
-            <div class="col-3 border">Наименование</div>
-            <div class="col-2 border">Стоимость</div>
-            <div class="col-2 border">С вами (дет/взр)</div>
-            <div class="col-1 border">Занято мест</div>
-        </div>
-        {% endif %}
-        <div class="row justify-content-center ">
-            <div class="col-2 border">{{ order.trip.starts_at|date:"d M Y" }} {{order.trip.starts_at|time:"H:i"}}</div>
-            <div class="col-3 border">{{ order.trip.route.name }}</div>
-            <div class="col-2 border">{{ order.trip.get_cost }} р.</div>
-            <div class="col-2 border">{{ order.kids_amount }}/{{ order.adults_amount }}</div>
-            <div class="col-1 border">{{ order.trip.subbed }}/{{ order.trip.max_group_size }}</div>
-        </div>
-    {% empty %}
-      <p>У вас не запланировано ни одного похода.</p>
-    {% endfor %}
     <div class="h5 col-12 text-center border rounded my-3">Пройденные маршруты</div>
 {% endblock %}

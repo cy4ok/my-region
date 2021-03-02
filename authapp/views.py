@@ -2,8 +2,6 @@ from django.contrib import auth
 from django.contrib.auth import login
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-
-# Create your views here.
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, TemplateView
 
@@ -36,6 +34,11 @@ def login_view(request):
         'next': next,
     }
     return render(request, 'authapp/login.html', content)
+
+
+def logout(request):
+    auth.logout(request)
+    return HttpResponseRedirect(reverse('main'))
 
 
 class RegisterView(TemplateView):
