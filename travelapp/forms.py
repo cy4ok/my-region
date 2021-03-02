@@ -1,4 +1,5 @@
 from django import forms
+from django.forms import SelectDateWidget
 
 from .models import RouteType, RouteLevel, Route, District, Region
 
@@ -25,6 +26,12 @@ class RouteFilterForm(forms.Form):
         choices=[('', 'Сложность')] + [(x, x.label) for x in RouteLevel],
         required=False,
     )
+    date_from = forms.DateField(label='Дата начала', required=False,
+                                widget=SelectDateWidget())
+    date_to = forms.DateField(label='Дата окончания', required=False,
+                              widget=SelectDateWidget())
+    price_from = forms.DecimalField(label='Цена от', required=False)
+    price_to = forms.DecimalField(label='Цена до', required=False)
 
 
 class RouteCreateForm(forms.ModelForm):

@@ -4,7 +4,8 @@ from django.urls import path
 app_name = 'travelapp'
 
 urlpatterns = [
-    path('', travelapp.RouteList.as_view(), name='route_list'),
+    path('', travelapp.TripSelectorList.as_view(), name='trip_selector'),
+    path('routes/', travelapp.RouteList.as_view(), name='route_list'),
     path('route/create/', travelapp.RouteCreateView.as_view(), name='route_create'),
     path('route/<int:pk>/', travelapp.RouteDetail.as_view(), name='route_read'),
     # path('route/update/<int:pk>/', travelapp.RouteUpdate.as_view(), name='route_update'),

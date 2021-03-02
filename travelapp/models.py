@@ -16,6 +16,22 @@ class RouteLevel(models.IntegerChoices):
     HARD = 3, _('Сложный')
 
 
+# todo this is actually bad
+class TripFilterQuerySet(models.QuerySet):
+    def get_filtered(self, **kwargs):
+        qs = self.filter(route__in=Route.objects.search(**kwargs))
+        if kwargs.get('date_from', ''):
+            qs = qs.filter(starts_at__gte=kwargs['date_from'])
+        if kwargs.get('date_to', ''):
+            qs = qs.filter(ends_at__lte=kwargs['date_to'])
+        if kwargs.get('price_from', ''):
+            qs = qs.filter(price__gte=int(kwargs['price_from']))
+        if kwargs.get('price_to', ''):
+            qs = qs.filter(price__lte=int(kwargs['price_to']))
+
+        return qs
+
+
 class RouteFilterQuerySet(models.QuerySet):
     def search(self, *args, **kwargs):
         qs = self.filter(is_active=True, is_checked=True)
@@ -35,7 +51,7 @@ class Route(models.Model):
     objects = RouteFilterQuerySet.as_manager()
 
     name = models.CharField(verbose_name='Название маршрута', max_length=100, unique=True)
-    type = models.IntegerField(verbose_name='Тип маршрута',
+    type = models.IntegerField(verbose_name='Тип',
                                choices=RouteType.choices,
                                default=RouteType.ON_FOOT,
                                db_index=True)
@@ -86,6 +102,7 @@ class RoutePhoto(models.Model):
 
 
 class Trip(models.Model):
+    objects = TripFilterQuerySet.as_manager()
     route = models.ForeignKey('Route',
                               related_name='trips',
                               on_delete=models.CASCADE)
@@ -93,7 +110,8 @@ class Trip(models.Model):
                                 max_digits=8,
                                 decimal_places=2,)
     announced_at = models.DateTimeField(verbose_name='Время объявления похода', auto_now_add=True)
-    starts_at = models.DateTimeField(verbose_name='Время начала похода')
+    starts_at = models.DateTimeField(verbose_name='Время начала похода', blank=False, db_index=True)
+    ends_at = models.DateTimeField(verbose_name='Время окончания похода', blank=False, db_index=True)
     instructor = models.ForeignKey(Instructor,
                                    related_name='trips',
                                    on_delete=models.CASCADE)
@@ -105,6 +123,10 @@ class Trip(models.Model):
     @property
     def subbed(self):
         return self.kids + self.adults
+    #
+    # @property
+    # def ends_at(self):
+    #     return self.starts_at + timedelta(days=self.route.duration)
 
     def get_cost(self):
         options_cost = 0

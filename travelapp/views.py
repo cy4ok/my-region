@@ -26,6 +26,26 @@ class RouteList(ListView):
         return Route.objects.filter(is_usable=True)
 
 
+class TripSelectorList(ListView):
+    model = Trip
+    template_name = 'travelapp/trip_selector.html'
+    context_object_name = 'trip_list'
+
+    def get_context_data(self, **kwargs):
+        data = super(TripSelectorList, self).get_context_data(**kwargs)
+        form = RouteFilterForm()
+        data['form'] = form
+        data['route_list'] = Route.objects.all()[:6]
+
+        return data
+
+    def get_queryset(self):
+        if self.request.GET.items():
+            form = RouteFilterForm(self.request.GET)
+            if form.is_valid():
+                return Trip.objects.get_filtered(**form.cleaned_data)
+
+
 class RouteDetail(DetailView):
     model = Route
 
