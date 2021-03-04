@@ -1,14 +1,17 @@
+from django.contrib.auth.decorators import login_required
 from django.db import transaction
-from django.shortcuts import render
 from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
 from django.views.generic import ListView, CreateView, DetailView
 
+from authapp.decorators import traveler_only
 from socialapp.forms import FullTripCommentCreateForm
 from socialapp.models import TripComment, CommentPhoto
 from travelapp.models import Trip
 
 
 # todo check for user participation
+@method_decorator([login_required, traveler_only], name='dispatch')
 class TripCommentCreate(CreateView):
     model = TripComment
     form_class = FullTripCommentCreateForm
