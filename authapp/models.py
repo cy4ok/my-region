@@ -5,6 +5,8 @@ from django.contrib.auth.models import AbstractUser
 from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 
+from ordersapp.models import OrderItem
+
 
 class Gender(models.IntegerChoices):
     FEMALE = 1, _('Женский')
@@ -42,6 +44,19 @@ class Traveler(models.Model):
 
     def __str__(self):
         return f'{self.user.get_full_name()} ({self.home_region})'
+
+    # todo: implement a model manager
+    def get_planned_trips(self):
+        return OrderItem.objects.filter(trip__starts_at__gte=now(), traveler=self)
+
+    def get_active_trips(self):
+        return OrderItem.objects.filter(trip__starts_at__lte=now(),
+                                        trip__ends_at__gte=now(),
+                                        traveler=self,
+                                        )
+
+    def get_finished_trips(self):
+        return OrderItem.objects.filter(trip__ends_at__lte=now(), traveler=self)
 
 
 class Instructor(models.Model):

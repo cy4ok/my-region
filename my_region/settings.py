@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'travelapp',
     'userapp',
     'ordersapp',
+    'socialapp',
     'crispy_forms',
 ]
 

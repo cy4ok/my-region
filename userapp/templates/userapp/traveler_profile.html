@@ -23,7 +23,7 @@
     <div class="h4 col-12 text-center border rounded">Мои маршруты</div>
     <div class="h5 col-12 text-center border rounded">Избранные маршруты</div>
     <div class="h5 col-12 text-center border rounded my-3">Запланированные походы</div>
-    {% for order in traveler.ordered_trips.all %}
+    {% for order in traveler.get_planned_trips.all %}
         {% if forloop.first %}
         <div class="row justify-content-center font-weight-bold">
             <div class="col-2 border">Время похода</div>
@@ -43,5 +43,25 @@
     {% empty %}
       <p>У вас не запланировано ни одного похода.</p>
     {% endfor %}
-    <div class="h5 col-12 text-center border rounded my-3">Пройденные маршруты</div>
+    <div class="h5 col-12 text-center border rounded my-3">Пройденные походы</div>
+    {% for order in traveler.get_finished_trips.all %}
+        {% if forloop.first %}
+        <div class="row justify-content-center font-weight-bold">
+            <div class="col-2 border">Время похода</div>
+            <div class="col-3 border">Наименование</div>
+            <div class="col-2 border">Стоимость</div>
+            <div class="col-2 border">С вами (дет/взр)</div>
+            <div class="col-1 border">Оставить оценку</div>
+        </div>
+        {% endif %}
+        <div class="row justify-content-center ">
+            <div class="col-2 border">{{ order.trip.starts_at|date:"d M Y" }} {{order.trip.starts_at|time:"H:i"}}</div>
+            <div class="col-3 border">{{ order.trip.route.name }}</div>
+            <div class="col-2 border">{{ order.trip.get_cost }} р.</div>
+            <div class="col-2 border">{{ order.kids_amount }}/{{ order.adults_amount }}</div>
+            <div class="col-1 border"><a href="{% url 'socialapp:trip_comment_create' order.trip.pk %}" class="btn btn-sm btn-info">Оценить</a></div>
+        </div>
+    {% empty %}
+      <p>Вы пока что не прошли ни одного похода.</p>
+    {% endfor %}
 {% endblock %}

@@ -47,7 +47,7 @@
                 {% endfor %}
                 </div>
                 <p class="h4 my-3">Запланированные походы:</p>
-                {% for trip in object.trips.all %}
+                {% for trip in object.get_planned.all %}
                 <div class="row justify-content-center">
                     <div class="col-2 border">{{ trip.starts_at|date:"d M Y" }} {{trip.starts_at|time:"H:i"}}</div>
                     <div class="col-4 border">{{ trip.instructor.user.get_full_name }}</div>
@@ -57,6 +57,54 @@
                 </div>
                 {% empty %}
                   <p>По данному маршруту не запланировано ни одного похода.</p>
+                {% endfor %}
+                <p class="h4 my-3">Проведённые походы:</p>
+                {% for trip in object.get_finished_trips.all %}
+                <div class="row justify-content-center">
+                    <div class="col-2 border">{{ trip.starts_at|date:"d M Y" }} {{trip.starts_at|time:"H:i"}}</div>
+                    <div class="col-4 border">{{ trip.instructor.user.get_full_name }}</div>
+                    <div class="col-2 border">{{ trip.price }}</div>
+                    <div class="col-1 border">{{ trip.subbed }}/{{ trip.max_group_size }}</div>
+                    <a href="{% url 'socialapp:trip_comment_create' trip.pk %}" class="btn btn-sm btn-info">Оценить</a>
+                </div>
+                {% empty %}
+                  <p>По данному маршруту не запланировано ни одного похода.</p>
+                {% endfor %}
+                <p class="h4 my-3">Отзывы</p>
+                {% for comment in object.get_route_comments.all %}
+                <div class="row col-10 justify-content-left mx-4 border p-3">
+                    <div class="row col-12 border">
+                        <div class="col-1">{{ comment.score }}*</div>
+                        <div class="col-3"><a href="{% url 'userapp:traveler_details' comment.author.pk %}">{{ comment.author.get_full_name }}</a></div>
+                        <div class="col-3">{{comment.added_at}}</div>
+                    </div>
+                    <div class="row border col-12 my-3">
+                        <div class="col-6">Поход проходил: {{comment.trip.starts_at|date}} — {{comment.trip.ends_at|date}}</div>
+                        <div class="col-6">
+                            Инструктор:
+                            <a href="{% url 'userapp:traveler_details' comment.trip.instructor.user.pk %}">
+                                {{comment.trip.instructor.user.get_full_name}}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="row col-12 border h6 p-3">{{ comment.content }}</div>
+                    <div class="row col-12">
+                        {% for photo in comment.photos.all %}
+                          <div class="col-md-4">
+                            <div class="route-image p-2">
+                              <a href="/{{ photo.image }}">
+                                <img src="/{{ photo.image }}" class="img-fluid img-thumbnail" alt="Lights">
+                                <div class="caption">
+                                  <p>Lorem ipsum...</p>
+                                </div>
+                              </a>
+                            </div>
+                          </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% empty %}
+                  <p>К данному маршруту ещё не написано ни одного отзыва.</p>
                 {% endfor %}
               </div><!-- /.blog-post -->
             {% endif %}

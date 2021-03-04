@@ -1,6 +1,6 @@
 from django.db import models
 
-from authapp.models import Traveler
+# from authapp.models import Traveler
 from travelapp.models import Trip, TripOptionAvailable
 
 
@@ -9,7 +9,7 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
-    traveler = models.ForeignKey(Traveler, null=False, related_name='ordered_trips', on_delete=models.CASCADE)
+    traveler = models.ForeignKey('authapp.Traveler', null=False, related_name='ordered_trips', on_delete=models.CASCADE)
     trip = models.ForeignKey(Trip, verbose_name='Поход', null=False, related_name='ordered', on_delete=models.CASCADE, db_index=True)
     adults_amount = models.IntegerField(verbose_name='Взрослых в вашей группе', default=1, null=False)
     kids_amount = models.IntegerField(verbose_name='Детей в вашей группе', default=0, null=False)

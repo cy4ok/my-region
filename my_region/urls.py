@@ -25,4 +25,5 @@ urlpatterns = [
     path('user/', include('userapp.urls', namespace='user')),
     path('orders/', include('ordersapp.urls', namespace='orders')),
     path('auth/', include('authapp.urls', namespace='auth')),
+    path('social/', include('socialapp.urls', namespace='social')),
 ]

@@ -1,7 +1,9 @@
 from django.db import models
+from django.utils.timezone import now
 from django.utils.translation import gettext_lazy as _
 from djmoney.models.fields import MoneyField
-from authapp.models import Instructor
+# from authapp.models import Instructor
+from socialapp.models import TripComment
 
 
 class RouteType(models.IntegerChoices):
@@ -19,7 +21,11 @@ class RouteLevel(models.IntegerChoices):
 # todo this is actually bad
 class TripFilterQuerySet(models.QuerySet):
     def get_filtered(self, **kwargs):
-        qs = self.filter(route__in=Route.objects.search(**kwargs))
+        # todo: fix double query
+        qs = self.filter(
+            route__in=Route.objects.search(**kwargs),
+            starts_at__gte=now(),
+        )
         if kwargs.get('date_from', ''):
             qs = qs.filter(starts_at__gte=kwargs['date_from'])
         if kwargs.get('date_to', ''):
@@ -77,7 +83,7 @@ class Route(models.Model):
     featured_photo = models.ImageField(upload_to='static/img', verbose_name='Фото для оформления маршрута', blank=True)
     is_active = models.BooleanField(verbose_name='Маршрут доступен для проведения', default=True, db_index=True, blank=False)
     is_checked = models.BooleanField(verbose_name='Модерация проведена', default=False, db_index=True, blank=False)
-    instructor = models.ForeignKey(Instructor,
+    instructor = models.ForeignKey('authapp.Instructor',
                                    related_name='routes',
                                    on_delete=models.SET_NULL,  # todo ?
                                    null=True,
@@ -85,6 +91,21 @@ class Route(models.Model):
     # height_difference
     # times_run
     # comments
+
+    def get_planned_trips(self):
+        return Trip.objects.filter(route=self, starts_at__gte=now())
+
+    def get_active_trips(self):
+        return Trip.objects.filter(route=self,
+                                   starts_at__lte=now(),
+                                   ends_at__gte=now(),
+                                   )
+
+    def get_finished_trips(self):
+        return Trip.objects.filter(route=self, ends_at__lte=now())
+
+    def get_route_comments(self):
+        return TripComment.objects.filter(trip__route=self)
 
     @property
     def is_usable(self):
@@ -112,7 +133,7 @@ class Trip(models.Model):
     announced_at = models.DateTimeField(verbose_name='Время объявления похода', auto_now_add=True)
     starts_at = models.DateTimeField(verbose_name='Время начала похода', blank=False, db_index=True)
     ends_at = models.DateTimeField(verbose_name='Время окончания похода', blank=False, db_index=True)
-    instructor = models.ForeignKey(Instructor,
+    instructor = models.ForeignKey('authapp.Instructor',
                                    related_name='trips',
                                    on_delete=models.CASCADE)
     kids = models.IntegerField(verbose_name='Детей в группе', default=0)

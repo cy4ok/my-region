@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView
 
-from travelapp.models import Route, Instructor, Trip, RoutePhoto
+from travelapp.models import Route, Trip, RoutePhoto
 from .forms import RouteFilterForm, FullRouteCreateForm
 
 
@@ -15,6 +15,7 @@ class RouteList(ListView):
         data = super(RouteList, self).get_context_data(**kwargs)
         form = RouteFilterForm()
         data['form'] = form
+        data['title'] = 'Список маршрутов'
 
         return data
 
@@ -34,6 +35,7 @@ class TripSelectorList(ListView):
     def get_context_data(self, **kwargs):
         data = super(TripSelectorList, self).get_context_data(**kwargs)
         form = RouteFilterForm()
+        data['title'] = 'Выбрать поход'
         data['form'] = form
         data['route_list'] = Route.objects.all()[:6]
 
