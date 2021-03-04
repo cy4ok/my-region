@@ -27,7 +27,7 @@ class TravelerProfileView(DetailView):
     context_object_name = 'traveler'
 
     def get_object(self, queryset=None):
-        return get_object_or_404(self.model, pk=self.request.user.pk)
+        return get_object_or_404(self.model, pk=self.request.user.traveler.pk)
 
 
 class InstructorDetailView(DetailView):
