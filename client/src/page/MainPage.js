@@ -11,28 +11,12 @@ import arrowLeft from "../images/icons/arrowLeft.png"
 import arrowRight from "../images/icons/arrowRight.png"
 import social from "../images/icons/social.png"
 
+import Header from "../components/header/Header"
+
 const mainPage = () => {
     return (
         <div>
-            <div class="flex items-center justify-around w-auto h-24 bg-primary">
-                <div class="flex items-center px-2">
-                        <img src={MainLogo} class="h-12" alt="mainLogo"/>
-                        <div class="flex flex-col">
-                            <span>Мой край</span>
-                            <span>Сервис путешествий по России</span>
-                    </div>
-                </div>
-                <div class="flex-row justify-center">
-                    <span>Главная</span>
-                    <span>Расписание</span>
-                    <span>Путешествинникам</span>
-                </div>
-                <div class="flex">
-                    <button>Войти</button>
-                    <img src={People} alt="people"/>
-                </div>
-
-            </div>
+            <Header />
             <div class="flex-none w-auto h-12 bg-secondary">
                 <span class="flex justify-center">Подобрать поход или активный тур</span>
                 <div class="flex justify-center">
