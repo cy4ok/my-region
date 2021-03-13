@@ -13,7 +13,7 @@ const mainPage = () => {
         <div>
             <div class="flex items-center justify-around w-auto h-24 bg-primary">
                 <div class="flex items-center px-2">
-                        <img src={MainLogo} class="h-12"/>
+                        <img src={MainLogo} class="h-12" alt="mainLogo"/>
                         <div class="flex flex-col">
                             <span>Мой край</span>
                             <span>Сервис путешествий по России</span>
@@ -26,7 +26,7 @@ const mainPage = () => {
                 </div>
                 <div class="flex">
                     <button>Войти</button>
-                    <img src={People} />
+                    <img src={People} alt="people"/>
                 </div>
 
             </div>
@@ -42,27 +42,27 @@ const mainPage = () => {
                 </div>
             </div>
             <div class="flex justify-center w-auto bg-primary">
-                <img src={MainMap} />
+                <img src={MainMap} alt="mainMap"/>
             </div>            
             <div class="w-auto bg-primary">
                 <span class="flex justify-center">Популярные маршруты</span>
                 <div>
                     <div>
-                        <img src={foto} />
+                        <img src={foto} alt="foto"/>
                         <div class="flex">
-                            <img src={star} />
-                            <img src={star} />
-                            <img src={star} />
-                            <img src={star} />
-                            <img src={star} />
+                            <img src={star} alt="star"/>
+                            <img src={star} alt="star"/>
+                            <img src={star} alt="star"/>
+                            <img src={star} alt="star"/>
+                            <img src={star} alt="star"/>
                         </div>
                         <span>Костромские красоты</span>
                         <span>Костромская область</span>
                         <div class="flex">
-                            <img src={clock} />
+                            <img src={clock} alt="clock"/>
                             <span>1 день</span>
-                            <img src={line} />
-                            <img src={LogoTrack} />
+                            <img src={line} alt="line"/>
+                            <img src={LogoTrack} alt="logoTrack"/>
                             <span>35 км</span>
                         </div>
                         <button>Подробнее</button>
@@ -70,7 +70,10 @@ const mainPage = () => {
                 </div>
             </div>
             <div class="w-auto h-12 bg-secondary">
+                <span>Отзывы</span>
+                <div>
 
+                </div>
             </div>
         </div>
     )
