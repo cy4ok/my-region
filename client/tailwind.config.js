@@ -10,7 +10,18 @@ module.exports = {
       backgroundColor: (theme) => ({
         primary: "#ffffff",
         secondary: "#E7EEE7",
-      })
+      }),
+      colors: {
+        textBlack: "#1F1C45"
+      },
+      fontSize: {
+        sm: ['12px', '14px'],
+        logoSize: ['25px', '30px']
+      },
+      fontFamily: {
+        sans: ['arkhip'],
+        jost: ['jost']
+      }
     },
   },
   variants: {

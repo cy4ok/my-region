@@ -1,6 +1,5 @@
 import React from 'react'
 import MainLogo from "../images/icons/MainLogo.png"
-import People from "../images/icons/people.png"
 import MainMap from "../images/icons/MainMap.png"
 import foto from "../images/icons/foto.png"
 import star from  "../images/icons/star.png"
@@ -11,39 +10,14 @@ import arrowLeft from "../images/icons/arrowLeft.png"
 import arrowRight from "../images/icons/arrowRight.png"
 import social from "../images/icons/social.png"
 
+import Header from "../components/header/Header"
+import Search from "../components/search/Search"
+
 const mainPage = () => {
     return (
         <div>
-            <div class="flex items-center justify-around w-auto h-24 bg-primary">
-                <div class="flex items-center px-2">
-                        <img src={MainLogo} class="h-12" alt="mainLogo"/>
-                        <div class="flex flex-col">
-                            <span>Мой край</span>
-                            <span>Сервис путешествий по России</span>
-                    </div>
-                </div>
-                <div class="flex-row justify-center">
-                    <span>Главная</span>
-                    <span>Расписание</span>
-                    <span>Путешествинникам</span>
-                </div>
-                <div class="flex">
-                    <button>Войти</button>
-                    <img src={People} alt="people"/>
-                </div>
-
-            </div>
-            <div class="flex-none w-auto h-12 bg-secondary">
-                <span class="flex justify-center">Подобрать поход или активный тур</span>
-                <div class="flex justify-center">
-                    <button>Регион</button>
-                    <button>Тип похода</button>
-                    <button>Сложность</button>
-                    <button>Дата</button>
-                    <button>Цена</button>
-                    <button>Найти</button>
-                </div>
-            </div>
+            <Header />
+            <Search />
             <div class="flex justify-center w-auto bg-primary">
                 <img src={MainMap} alt="mainMap"/>
             </div>            

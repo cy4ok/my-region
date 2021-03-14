@@ -15,3 +15,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: 'arkhip';
+  font-weight: 400;
+  src: url('../src/fonts/Arkhip.ttf') format('ttf');
+}
+
+@font-face {
+  font-family: 'jost';
+  font-weight: 400;
+  src: url('../src/fonts/Jost-Regular.ttf') format('ttf');
+}
+
