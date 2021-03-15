@@ -13,9 +13,9 @@ const Header = () => {
         </div>
       </div>
       <div class="flex-row justify-center w-1/3">
-        <span class="px-6 font-jost text-black hover:text-gray-400">Главная</span>
-        <span class="px-6 font-jost text-gray-400 hover:text-black">Расписание</span>
-        <span class="px-6 font-jost text-gray-400 hover:text-black">Путешествинникам</span>
+        <span class="px-6 font-jost text-black hover:text-gray-400 cursor-pointer">Главная</span>
+        <span class="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Расписание</span>
+        <span class="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Путешествинникам</span>
       </div>
       <div class="flex">
         <button class="px-5 text-gray-400 font-jost">Войти</button>

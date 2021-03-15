@@ -16,7 +16,8 @@ module.exports = {
       },
       fontSize: {
         sm: ['12px', '14px'],
-        logoSize: ['25px', '30px']
+        logoSize: ['25px', '30px'],
+        textSeach: ['20px', '20px']
       },
       fontFamily: {
         sans: ['arkhip'],
