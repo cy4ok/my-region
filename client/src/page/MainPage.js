@@ -1,6 +1,5 @@
 import React from 'react'
 import MainLogo from "../images/icons/MainLogo.png"
-import MainMap from "../images/icons/MainMap.png"
 import foto from "../images/icons/foto.png"
 import star from  "../images/icons/star.png"
 import clock from  "../images/icons/clock.png"
@@ -12,15 +11,14 @@ import social from "../images/icons/social.png"
 
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
+import Map from "../components/map/Map"
 
 const mainPage = () => {
     return (
         <div>
             <Header />
             <Search />
-            <div class="flex justify-center w-auto bg-primary">
-                <img src={MainMap} alt="mainMap"/>
-            </div>            
+            <Map />
             <div class="w-auto bg-primary">
                 <span class="flex justify-center">Популярные маршруты</span>
                 <div>
