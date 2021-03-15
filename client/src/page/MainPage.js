@@ -1,10 +1,6 @@
 import React from 'react'
 import MainLogo from "../images/icons/MainLogo.png"
-import foto from "../images/icons/foto.png"
-import star from  "../images/icons/star.png"
-import clock from  "../images/icons/clock.png"
-import LogoTrack from  "../images/icons/LogoTrack.png"
-import line from "../images/icons/line.png"
+
 import arrowLeft from "../images/icons/arrowLeft.png"
 import arrowRight from "../images/icons/arrowRight.png"
 import social from "../images/icons/social.png"
@@ -12,6 +8,7 @@ import social from "../images/icons/social.png"
 import Header from "../components/header/Header"
 import Search from "../components/search/Search"
 import Map from "../components/map/Map"
+import PopRoute from "../components/popRoute/PopRoute"
 
 const mainPage = () => {
     return (
@@ -19,31 +16,7 @@ const mainPage = () => {
             <Header />
             <Search />
             <Map />
-            <div class="w-auto bg-primary">
-                <span class="flex justify-center">Популярные маршруты</span>
-                <div>
-                    <div>
-                        <img src={foto} alt="foto"/>
-                        <div class="flex">
-                            <img src={star} alt="star"/>
-                            <img src={star} alt="star"/>
-                            <img src={star} alt="star"/>
-                            <img src={star} alt="star"/>
-                            <img src={star} alt="star"/>
-                        </div>
-                        <span>Костромские красоты</span>
-                        <span>Костромская область</span>
-                        <div class="flex">
-                            <img src={clock} alt="clock"/>
-                            <span>1 день</span>
-                            <img src={line} alt="line"/>
-                            <img src={LogoTrack} alt="logoTrack"/>
-                            <span>35 км</span>
-                        </div>
-                        <button>Подробнее</button>
-                    </div>
-                </div>
-            </div>
+            <PopRoute />
             <div class="w-auto bg-secondary">
                 <span>Отзывы</span>
                 <div>
