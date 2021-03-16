@@ -29,13 +29,13 @@ const Footer = () => {
                 <span className="font-jost text-addressSize pb-2">Личный кабинет</span>
             </div>
             <div className="flex flex-col mt-3.5">
-                <span className="font-jost text-addressSize font-medium">Организациям</span>
+                <span className="font-jost text-addressSize font-medium pb-2">Организациям</span>
                 <span className="font-jost text-addressSize pb-2">ООПТ</span>
                 <span className="font-jost text-addressSize pb-2">Тарифы</span>
                 <span className="font-jost text-addressSize pb-2">Тарифы</span>
             </div>
             <div className="flex flex-col mt-3.5">
-                <span className="font-jost text-addressSize font-medium">Обратная связь</span>
+                <span className="font-jost text-addressSize font-medium pb-2">Обратная связь</span>
                 <span className="font-jost text-addressSize pb-2">Вакансии</span>
                 <span className="font-jost text-addressSize pb-2">Контакты</span>
                 <span className="font-jost text-addressSize pb-2">Обратная связь</span>
