@@ -25,7 +25,9 @@ module.exports = {
         textCard: ['18px', '20px'],
         titleReviews: ['22px', '20px'],
         dateReviewesSize: ['19px', '20px'],
-        pReviews: ['20px', '21px']
+        pReviews: ['20px', '21px'],
+        addressSize:['20px', '29px'],
+        telSize: ['19px', '27px']
       },
       fontFamily: {
         sans: ['arkhip'],
