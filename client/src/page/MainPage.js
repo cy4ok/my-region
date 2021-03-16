@@ -8,7 +8,7 @@ import Footer from "../components/footer/Footer"
 
 const mainPage = () => {
     return (
-        <div>
+        <div className="flex flex-col justify-items-center">
             <Header />
             <Search />
             <Map />
