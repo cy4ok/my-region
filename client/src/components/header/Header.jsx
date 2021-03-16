@@ -18,7 +18,7 @@ const Header = () => {
         <span className="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Путешествинникам</span>
       </div>
       <div className="flex">
-        <button className="px-5 text-gray-400 font-jost">Войти</button>
+        <button className="px-5 text-gray-400 font-jost focus:outline-none">Войти</button>
         <img src={People} alt="people" className=""/>
       </div>
     </header>
