@@ -14,14 +14,18 @@ module.exports = {
       }),
       colors: {
         textBlack: "#1F1C45",
-        textRegionColor: "#D9D9D9"
+        textRegionColor: "#D9D9D9",
+        dateReviewes: "#BEBEBE"
       },
       fontSize: {
         sm: ['12px', '14px'],
         logoSize: ['25px', '30px'],
         textSeach: ['20px', '20px'],
         textRegion: ['17px', '20px'],
-        textCard: ['18px', '20px']
+        textCard: ['18px', '20px'],
+        titleReviews: ['22px', '20px'],
+        dateReviewesSize: ['19px', '20px'],
+        pReviews: ['20px', '21px']
       },
       fontFamily: {
         sans: ['arkhip'],

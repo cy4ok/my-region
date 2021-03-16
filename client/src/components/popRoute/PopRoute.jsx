@@ -16,7 +16,7 @@ const getStars = () => {
 const PopRoute = () => {
     return (
        
-        <div class="w-auto bg-primary">
+        <div class="w-auto bg-primary pb-36">
                 <span class="flex justify-center pt-20 font-jost font-bold text-xl pb-11">Популярные маршруты</span>
                 <div class="flex justify-around">
                     <div class="pl-8">
