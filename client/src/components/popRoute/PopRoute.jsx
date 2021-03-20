@@ -33,7 +33,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                     <div className="pl-8">
                         <img className="pr-8 pt-9 pb-5" src={foto} alt="foto"/>
@@ -49,7 +49,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                     <div className="pl-8">
                         <img className="pr-8 pt-9 pb-5" src={foto} alt="foto"/>
@@ -65,7 +65,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                 </div>
                 <div className="flex justify-around">
@@ -83,7 +83,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                     <div className="pl-8">
                         <img className="pr-8 pt-9 pb-5" src={foto} alt="foto"/>
@@ -99,7 +99,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                     <div className="pl-8">
                         <img className="pr-8 pt-9 pb-5" src={foto} alt="foto"/>
@@ -115,7 +115,7 @@ const PopRoute = () => {
                             <img src={LogoTrack} alt="logoTrack"/>
                             <span className="pl-3 text-textCard font-jost">35 км</span>
                         </div>
-                        <button className="bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
+                        <button className="focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">Подробнее</button>
                     </div>
                 </div>
             </div>

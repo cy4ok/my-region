@@ -13,12 +13,12 @@ const Header = () => {
         </div>
       </div>
       <div className="flex-row justify-center w-1/3">
-        <span className="px-6 font-jost text-black hover:text-gray-400 cursor-pointer">Главная</span>
+        <span className="px-6 font-jost text-black cursor-pointer">Главная</span>
         <span className="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Расписание</span>
         <span className="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Путешествинникам</span>
       </div>
       <div className="flex">
-        <button className="px-5 text-gray-400 font-jost">Войти</button>
+        <button className="px-5 text-gray-400 font-jost hover:text-black focus:outline-none">Войти</button>
         <img src={People} alt="people" className=""/>
       </div>
     </header>
