@@ -21,9 +21,11 @@ const Header = () => {
         </div>
       </Link>
       <div className="flex-row justify-center w-1/3">
-        <span className="px-6 font-jost text-black cursor-pointer">
-          Главная
-        </span>
+        <Link to="/">
+          <span className="px-6 font-jost text-black cursor-pointer">
+            Главная
+          </span>
+        </Link>
         <span className="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">
           Расписание
         </span>
