@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className="flex items-center justify-around w-auto h-28 bg-primary">
       <div className="flex items-center px-2">
-        <img src={MainLogo} className="h-20 " alt="mainLogo" />
+        <img src={MainLogo} className="h-20 cursor-pointer" alt="mainLogo" />
         <div className="flex flex-col">
           <span className="text-textBlack text-logoSize font-sans py-1 tracking-widest">мой край</span>
           <span className="text-textBlack font-sans font-normal text-sm">Сервис путешествий по России</span>
