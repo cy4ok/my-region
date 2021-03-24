@@ -1,8 +1,13 @@
-import React from "react";
-import MainLogo from "../../images/icons/MainLogo.png";
-import People from "../../images/icons/people.png";
+import React, { useState } from "react"
+import ModalMain from "../../components/modalMain/ModalMain"
+import MainLogo from "../../images/icons/MainLogo.png"
+import People from "../../images/icons/people.png"
+import Registred from "../../components/registred/registred"
+import Login from "../../components/login/login"
 
 const Header = () => {
+  const [modalActive, setModalActive] = useState(false)
+  const [logAct, setLogAct] = useState(false)
   return (
     <header className="flex items-center justify-around w-auto h-28 bg-primary">
       <div className="flex items-center px-2">
@@ -18,9 +23,12 @@ const Header = () => {
         <span className="px-6 font-jost text-gray-400 hover:text-black cursor-pointer">Путешествинникам</span>
       </div>
       <div className="flex">
-        <button className="px-5 text-gray-400 font-jost focus:outline-none">Войти</button>
-        <img src={People} alt="people" className=""/>
+        <button className="px-5 text-gray-400 font-jost focus:outline-none" onClick={setModalActive}>Регистрация</button>
+        <button className="px-5 text-gray-400 font-jost focus:outline-none" onClick={setLogAct}>Войти</button>
+        <img className="cursor-pointer" src={People} onClick={setLogAct} alt="people" />
       </div>
+      <ModalMain active={modalActive} setActive={setModalActive} children={<Registred />}/>
+      <ModalMain active={logAct} setActive={setLogAct} children={<Login />}/>
     </header>
   );
 };

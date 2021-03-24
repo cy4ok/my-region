@@ -6,7 +6,7 @@ import PopRoute from "../components/popRoute/PopRoute"
 import Reviews from "../components/reviews/Reviews"
 import Footer from "../components/footer/Footer"
 
-const mainPage = () => {
+const MainPage = () => {
     return (
         <div className="flex flex-col justify-items-center">
             <Header />
@@ -19,4 +19,4 @@ const mainPage = () => {
     )
 }
 
-export default mainPage
+export default MainPage
