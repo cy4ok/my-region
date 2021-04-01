@@ -2,6 +2,9 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: false, // or 'media' or 'class'
   theme: {
+    boxShadow: {
+      shadowRoute: "0px 1px 9px 0px rgba(44, 84, 13, 0.2)",
+    },
     extend: {
       backgroundImage: (image) => ({
         "main-logo":
@@ -15,8 +18,9 @@ module.exports = {
       }),
       colors: {
         textBlack: "#1F1C45",
-        textRegionColor: "#D9D9D9",
-        dateReviewes: "#BEBEBE"
+        textRegionColor: "#767676",
+        dateReviewes: "#BEBEBE",
+        hoverSearch: "#477D1C"
       },
       fontSize: {
         sm: ['12px', '14px'],
