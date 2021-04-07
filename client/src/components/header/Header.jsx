@@ -26,7 +26,9 @@ const Header = () => {
         </div>
       </Link>
       <div className="flex-row justify-center w-1/3">
+      <Link to="/">
         <span className="px-6 text-textSeach font-jost text-black hover:text-gray-400 cursor-pointer">Главная</span>
+      </Link>
         <span className="px-6 text-textSeach font-jost text-gray-400 hover:text-black cursor-pointer">Расписание</span>
         <span className="px-6 text-textSeach font-jost text-gray-400 hover:text-black cursor-pointer">Путешествинникам</span>
       </div>
