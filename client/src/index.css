@@ -16,9 +16,23 @@
   src: url('./fonts/Jost-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'JostBold';
+  font-weight: 700;
+  font-style: normal;
+  src: url('./fonts/Jost-Bold.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Jostmd';
+  font-weight: 500;
+  font-style: normal;
+  src: url('./fonts/Jost-Medium.ttf') format('truetype');
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Arkhip', 'Jost', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Jost', 'Arkhip', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;

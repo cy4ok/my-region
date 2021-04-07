@@ -1,7 +1,7 @@
 import React from "react"
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import foto from "../../images/icons/foto.png"
+import Tesla from "../../images/route/tesla.png"
 import star from  "../../images/icons/star.png"
 import clock from  "../../images/icons/clock.png"
 import LogoTrack from  "../../images/icons/LogoTrack.png"
@@ -18,8 +18,8 @@ const getRoute = () => {
   let content = [];
   for (let i = 0; i < 3; i++) {
     content.push(
-      <div className="pl-8 mt-11 relative shadow-shadowRoute">
-        <img className="pr-8 pt-9 pb-5 " src={foto} alt="foto" />
+      <div className="w-1/4 pl-8 mt-11 relative shadow-shadowRoute">
+        <img className="w-72 h-56 pr-8 pt-9 pb-5 " src={Tesla} alt="Tesla" />
         <div className="flex absolute right-12 top-12">{getStars()}</div>
         <span className="flex font-bold text-textSeach font-jost pt-2.5 pb-1">
           Костромские красоты
@@ -36,7 +36,7 @@ const getRoute = () => {
           <span className="pl-3 text-textCard font-jost">Пеший</span>
         </div>
         <Link to="RoutePage">
-          <button className=" mb-9 focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">
+          <button className=" mb-9 focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jostmd text-base">
             Подробнее
           </button>
         </Link>
