@@ -1,7 +1,7 @@
 import React from "react"
-import { Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import Tesla from "../../images/route/Tesla.png"
+import Tesla from "../../images/route/tesla.png"
 import star from  "../../images/icons/star.png"
 import clock from  "../../images/icons/clock.png"
 import LogoTrack from  "../../images/icons/LogoTrack.png"
@@ -36,7 +36,7 @@ const getRoute = () => {
           <span className="pl-3 text-textCard font-jost">Пеший</span>
         </div>
         <Link to="RoutePage">
-          <button className=" mb-9 focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jost font-medium text-base">
+          <button className=" mb-9 focus:outline-none bg-bgBtn w-72 h-11 rounded-3xl text-white font-jostmd text-base">
             Подробнее
           </button>
         </Link>

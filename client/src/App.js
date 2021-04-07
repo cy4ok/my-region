@@ -7,12 +7,14 @@ import Footer from "./components/footer/Footer"
 import MainPage from "./page/MainPage"
 import UserPage from "./page/UserPage"
 import RoutePage from "./page/RoutePage"
+import ScrollToTop from "./components/ScrollToTop"
 
 function App() {
 
   return (
     <React.StrictMode>
         <Router>
+        <ScrollToTop />
         <Header />
           <Switch>
             <Route exact path="/" component={MainPage} />
