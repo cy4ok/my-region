@@ -9,31 +9,31 @@ const Registred = () => {
                 </svg>
             </div>
             <span className="flex justify-center font-jost font-bold text-registerText">Регистрация</span>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col pb-3">
                 <span className="font-jost text-titleRegister pb-1">Организатор / Участник</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none"></input>
             </div>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col  pb-3">
                 <span className="font-jost text-titleRegister pb-1">Имя и Фамилия</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none"></input>
             </div>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col pb-3">
                 <span className="font-jost text-titleRegister pb-1">Номер телефона</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none"></input>
             </div>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col pb-3">
                 <span className="font-jost text-titleRegister pb-1">Электронная почта</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none"></input>
             </div>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col pb-3">
                 <span className="font-jost text-titleRegister pb-1">Пароль</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none" type="password"></input>
             </div>
-            <div className="flex flex-col pt-7 pb-3">
+            <div className="flex flex-col pb-3">
                 <span className="font-jost text-titleRegister pb-1">Подтвердить пароль</span>
-                <input className="px-6 h-14 rounded-3xl focus:outline-none"></input>
+                <input className="px-6 h-10 rounded-3xl focus:outline-none" type="password"></input>
             </div>
-            <button className="w-full font-jost text-registerText px-6 h-14 rounded-3xl bg-btmReg focus:outline-none">Зарегистрироваться</button>
+            <button className="w-full font-jost text-registerText px-6 h-10 rounded-3xl bg-btmReg focus:outline-none">Зарегистрироваться</button>
         </div>
     )
 }
