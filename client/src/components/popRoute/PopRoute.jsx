@@ -22,10 +22,10 @@ const getRoute = () => {
         <img className="w-72 h-56 pr-8 pt-9 pb-5 " src={Tesla} alt="Tesla" />
         <div className="flex absolute right-12 top-12">{getStars()}</div>
         <span className="flex font-bold text-textSeach font-jost pt-2.5 pb-1">
-          Костромские красоты
+            Поход на Истринский калейдоскоп
         </span>
         <span className="flex font-jost text-textRegion text-textRegionColor">
-          Костромская область
+            Московская обл./ Истринский р-н
         </span>
         <p className="font-jost">Самый быстрый и удобный маршрут.</p>
         <div className="flex pt-3 pb-8">
